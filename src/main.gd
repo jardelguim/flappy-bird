@@ -1,6 +1,6 @@
 extends Node2D
 
-const PIPE = preload("uid://bun7g6yv08gi7")
+const PIPE = preload("res://scenes/pipe.tscn")
 
 func _ready() -> void:
 	_spawn_pipe($%SpawnPoint.global_position)
