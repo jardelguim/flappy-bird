@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-@export var gravity: float = 800.0
-@export var jump_force: float = -300.0
+@export var gravity: float = 700.0
+@export var jump_force: float = -200.0
+
+signal player_hit
 
 func _physics_process(delta):
 	# rotaciona baseado na velocidaded
@@ -13,8 +15,5 @@ func _physics_process(delta):
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		die()
-
-func die():
-	# Emitir o sinal de morte e deixar outro se virar para dar game over
-	queue_free()
+		emit_signal("player_hit")
+		#print("signal emmited!")
