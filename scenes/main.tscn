@@ -1,3 +1,38 @@
 [gd_scene format=3 uid="uid://bvpnynt0wo3dj"]
 
+[ext_resource type="Script" uid="uid://bxt21klo0thu0" path="res://src/main.gd" id="1_o5qli"]
+
 [node name="Main" type="Node2D" unique_id=1188981804]
+script = ExtResource("1_o5qli")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=252047468]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1644741050]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.28863296, 0.47618765, 0.31004375, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Background" unique_id=875609244]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.19887239, 0.33872226, 0.21399912, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=2041042398]
+wait_time = 1.5
+autostart = true
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=714562999]
+unique_name_in_owner = true
+position = Vector2(350, 100)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
