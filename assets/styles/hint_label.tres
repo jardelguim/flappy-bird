@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dcx213jbrbafg"]
+
+[ext_resource type="FontFile" uid="uid://bodk7wnenmgon" path="res://assets/fonts/determination.ttf" id="1_ritee"]
+
+[resource]
+font = ExtResource("1_ritee")
+font_size = 11
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
