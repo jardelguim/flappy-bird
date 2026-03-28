@@ -19,7 +19,7 @@ var travel_distance : float = 0.0
 func _process(delta: float) -> void:
 	#print(global_position)
 	position += move_vector * speed * delta
-	travel_distance += 1
+	travel_distance += 1 * delta
 	
 	if travel_distance > 600.0:
 		queue_free()
