@@ -13,8 +13,11 @@ func _physics_process(delta):
 	
 	if is_grav_on:
 		self.velocity.y += gravity * delta
+
 		if Input.is_action_just_pressed("jump"):
 			self.velocity.y = jump_force
+
+		self.position.y = clamp(self.position.y, 0, get_viewport_rect().size.y)
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
@@ -23,3 +26,8 @@ func _physics_process(delta):
 
 func _play_start() -> void:
 	$AnimationPlayer.play("start")
+
+func take_damage() -> void:
+	player_hit.emit()
+	print("player is hitted")
+	queue_free()
