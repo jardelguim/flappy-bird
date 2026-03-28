@@ -33,3 +33,7 @@ func _on_hint_timer_timeout() -> void:
 	$HintLabel/HintAnimationPlayer.play("hint_animation")
 	await $HintLabel/HintAnimationPlayer.animation_finished
 	player.is_grav_on = true
+
+
+func _on_retry_button_pressed() -> void:
+	pass

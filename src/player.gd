@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
 @export var gravity: float = 700.0
-@export var jump_force: float = -200.0
+@export var jump_force: float = -150.0
 
 var is_grav_on := false
+var screen_max_y
 
 signal player_hit
+
+func _ready() -> void:
+	screen_max_y = get_viewport_rect().size.y
 
 func _physics_process(delta):
 	# rotaciona baseado na velocidaded
@@ -17,7 +21,10 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump"):
 			self.velocity.y = jump_force
 
-		self.position.y = clamp(self.position.y, 0, get_viewport_rect().size.y)
+		self.position.y = clamp(self.position.y, 0, screen_max_y)
+	
+	if self.position.y == screen_max_y:
+		self.take_damage()
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:

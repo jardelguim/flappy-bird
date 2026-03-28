@@ -31,3 +31,6 @@ position = Vector2(0, 1)
 
 [node name="MiddleCollision" type="CollisionShape2D" parent="Passage" unique_id=1360723009]
 shape = SubResource("RectangleShape2D_8p0di")
+
+[connection signal="body_entered" from="Pipes" to="." method="_on_pipes_body_entered"]
+[connection signal="body_entered" from="Passage" to="." method="_on_passage_body_entered"]

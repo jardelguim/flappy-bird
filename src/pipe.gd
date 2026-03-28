@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 enum Direction {
 	LEFT,
@@ -25,7 +25,9 @@ func _process(delta: float) -> void:
 	if travel_distance > 600.0:
 		queue_free()
 
-
-func _on_body_entered(body: Node2D) -> void:
+func _on_pipes_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.call("take_damage")
+
+func _on_passage_body_entered(body: Node2D) -> void:
+	print("score")

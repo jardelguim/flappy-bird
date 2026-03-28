@@ -45,4 +45,5 @@ autostart = true
 unique_name_in_owner = true
 position = Vector2(353, 145)
 
+[connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,14 @@
 extends Node2D
 
+var score = 0
 const PIPE = preload("res://scenes/pipe.tscn")
 
 func _ready() -> void:
 	$Player.hide()
-	
+
+func reset_game() -> void:
+	score = 0
+
 func _spawn_pipe(pos) -> void:
 	var new_pipe = PIPE.instantiate()
 	new_pipe.global_position.x = pos.x
@@ -13,4 +17,7 @@ func _spawn_pipe(pos) -> void:
 
 func _on_timer_timeout() -> void:
 	_spawn_pipe($%SpawnPoint.global_position)
-	
+
+func _on_player_player_hit() -> void:
+	get_tree().paused = true
+	$HUDLayer/HUD/GameOverMenu.show()
