@@ -5,11 +5,13 @@ extends CharacterBody2D
 
 var is_grav_on := false
 var screen_max_y
+var is_alive = true
 
 signal player_hit
 
 func _ready() -> void:
 	screen_max_y = get_viewport_rect().size.y
+	
 
 func _physics_process(delta):
 	# rotaciona baseado na velocidaded
@@ -23,7 +25,8 @@ func _physics_process(delta):
 
 		self.position.y = clamp(self.position.y, 0, screen_max_y)
 	
-	if self.position.y == screen_max_y:
+	if self.position.y == screen_max_y and is_alive:
+		is_alive = false
 		self.take_damage()
 
 	var collision = move_and_collide(velocity * delta)

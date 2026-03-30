@@ -23,6 +23,7 @@ func _reset_pipes() -> void:
 
 func _reset_game() -> void:
 	_reset_pipes()
+	player.is_alive = true
 	player.is_grav_on = true
 	get_tree().paused = false
 
