@@ -15,12 +15,14 @@ const DIRECTION_VECTORS = {
 
 var move_vector : Vector2 = DIRECTION_VECTORS[direction_vector]
 var travel_distance : float = 0.0
+var is_moving := true
 
 func _process(delta: float) -> void:
 	#print(global_position)
-	position += move_vector * speed * delta
+	if is_moving:
+		position += move_vector * speed * delta
 	
-	travel_distance += speed * delta
+		travel_distance += speed * delta
 	
 	if travel_distance > 600.0:
 		queue_free()

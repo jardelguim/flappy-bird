@@ -91,6 +91,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_047uy")
 
+[node name="ScoreLabel" type="Label" parent="." unique_id=1344247418]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 24.0
+grow_horizontal = 2
+text = "0"
+label_settings = ExtResource("2_5ysmq")
+horizontal_alignment = 1
+
 [node name="HUDBG" type="ColorRect" parent="." unique_id=1628001909]
 layout_mode = 1
 anchors_preset = 15
@@ -215,8 +229,12 @@ text = "Try Again"
 wait_time = 3.0
 one_shot = true
 
+[node name="ResetTimer" type="Timer" parent="." unique_id=181970579]
+wait_time = 3.0
+one_shot = true
+
 [node name="HintTimer" type="Timer" parent="." unique_id=1539874530]
-wait_time = 4.0
+wait_time = 3.5
 one_shot = true
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1816386846]
@@ -259,4 +277,5 @@ libraries/ = SubResource("AnimationLibrary_mphia")
 [connection signal="pressed" from="StartMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="timeout" from="GameStartTimer" to="." method="_on_game_start_timer_timeout"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="timeout" from="HintTimer" to="." method="_on_hint_timer_timeout"]

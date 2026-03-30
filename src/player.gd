@@ -34,7 +34,17 @@ func _physics_process(delta):
 func _play_start() -> void:
 	$AnimationPlayer.play("start")
 
+func _play_idle():
+	$AnimationPlayer.play("idle")
+	
+func _play_fall():
+	$AnimationPlayer.play("fall")
+
 func take_damage() -> void:
+	velocity = Vector2.ZERO
+	is_grav_on = false
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	_play_fall()
 	player_hit.emit()
-	print("player is hitted")
-	queue_free()
+	
+	

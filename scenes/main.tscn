@@ -9,10 +9,14 @@ script = ExtResource("1_o5qli")
 
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=218147191]
 process_mode = 3
+layer = 2
 
 [node name="HUD" parent="HUDLayer" unique_id=2056847830 instance=ExtResource("2_sugp2")]
 
+[node name="Pipes" type="Node2D" parent="." unique_id=1103681441]
+
 [node name="Player" parent="." unique_id=538685137 instance=ExtResource("2_0wfyh")]
+z_index = 1
 position = Vector2(100, 100)
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=252047468]
@@ -37,7 +41,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 color = Color(0.19887239, 0.33872226, 0.21399912, 1)
 
-[node name="Timer" type="Timer" parent="." unique_id=2041042398]
+[node name="PipeTimer" type="Timer" parent="." unique_id=2041042398]
 wait_time = 1.6999999999999995
 autostart = true
 
@@ -45,5 +49,6 @@ autostart = true
 unique_name_in_owner = true
 position = Vector2(353, 145)
 
-[connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="player_hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="player_hit" from="Player" to="HUDLayer/HUD" method="_on_player_hit"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
