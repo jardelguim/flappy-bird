@@ -27,6 +27,7 @@ func _reset_game() -> void:
 	player.is_grav_on = true
 	get_tree().paused = false
 	score = 0
+	$HUDLayer/HUD.update_score(0)
 
 func _start_game() -> void:
 	player.show()
