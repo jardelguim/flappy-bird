@@ -10,6 +10,8 @@ const DIRECTION_VECTORS = {
 	Direction.RIGHT : Vector2( 1 , 0),
 }
 
+signal pipe_passed
+
 @export var direction_vector : Direction = Direction.LEFT
 @export var speed : float = 10.0
 
@@ -32,4 +34,5 @@ func _on_pipes_body_entered(body: Node2D) -> void:
 		body.call("take_damage")
 
 func _on_passage_body_entered(body: Node2D) -> void:
-	print("score")
+	pipe_passed.emit()
+   
