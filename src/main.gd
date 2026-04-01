@@ -36,7 +36,7 @@ func _start_game() -> void:
 func _spawn_pipe(pos) -> void:
 	var new_pipe = PIPE.instantiate()
 	new_pipe.global_position.x = pos.x
-	new_pipe.global_position.y = randf_range(45 , 160)
+	new_pipe.global_position.y = randf_range(49 , 140)
 	new_pipe.pipe_passed.connect(_increase_score)
 	$Pipes.add_child(new_pipe)
 
@@ -44,7 +44,8 @@ func _on_pipe_timer_timeout() -> void:
 	_spawn_pipe($%SpawnPoint.global_position)
 
 func _on_player_hit() -> void:  
-	get_tree().paused = true
+	pass
+	# get_tree().paused = true
 
 func _increase_score() -> void:
 	score += 1

@@ -84,6 +84,43 @@ _data = {
 &"hint_animation": SubResource("Animation_0i1j5")
 }
 
+[sub_resource type="Animation" id="Animation_mphia"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(95, 49)]
+}
+
+[sub_resource type="Animation" id="Animation_0m4u7"]
+resource_name = "startmenu_animation"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(95, 49), Vector2(110.8, 49), Vector2(-150, 49)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_apjy4"]
+_data = {
+&"RESET": SubResource("Animation_mphia"),
+&"startmenu_animation": SubResource("Animation_0m4u7")
+}
+
 [node name="HUD" type="Control" unique_id=2056847830]
 layout_mode = 3
 anchors_preset = 15
@@ -125,7 +162,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -55.0
 offset_top = -51.0
-offset_right = 55.0
+offset_right = 55.000443
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -140,6 +177,16 @@ text = "Flappy Bird"
 label_settings = ExtResource("2_5ysmq")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StartMenu/MainVerticalContainer" unique_id=944485897]
+visible = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 22.34)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_6fi6k")
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]{text}[/shake]"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="StartMenu/MainVerticalContainer" unique_id=780192071]
 layout_mode = 2
@@ -287,7 +334,11 @@ horizontal_alignment = 1
 [node name="HintAnimationPlayer" type="AnimationPlayer" parent="HintLabel" unique_id=949988190]
 libraries/ = SubResource("AnimationLibrary_mphia")
 
+[node name="HUDAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102933864]
+libraries/ = SubResource("AnimationLibrary_apjy4")
+
 [connection signal="pressed" from="StartMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="GameStartTimer" to="." method="_on_game_start_timer_timeout"]

@@ -10,7 +10,7 @@ var is_alive = true
 signal player_hit
 
 func _ready() -> void:
-	screen_max_y = get_viewport_rect().size.y
+	screen_max_y = get_viewport_rect().size.y - 12.0
 	
 
 func _physics_process(delta):
@@ -47,7 +47,9 @@ func take_damage() -> void:
 	velocity = Vector2.ZERO
 	is_grav_on = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
 	_play_fall()
+	await $AnimationPlayer.animation_finished
 	player_hit.emit()
 	
 	

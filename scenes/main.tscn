@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bxt21klo0thu0" path="res://src/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://b8nimb5anw8sy" path="res://scenes/player.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bpp0u7c8c3mht" path="res://scenes/hud.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bswguv2aqtmrf" path="res://scenes/background.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=1188981804]
 script = ExtResource("1_o5qli")
@@ -13,33 +14,9 @@ layer = 2
 
 [node name="HUD" parent="HUDLayer" unique_id=2056847830 instance=ExtResource("2_sugp2")]
 
-[node name="Pipes" type="Node2D" parent="." unique_id=1103681441]
-
 [node name="Player" parent="." unique_id=538685137 instance=ExtResource("2_0wfyh")]
-z_index = 1
-position = Vector2(100, 100)
-
-[node name="Background" type="CanvasLayer" parent="." unique_id=252047468]
-layer = -10
-
-[node name="MainBackground" type="ColorRect" parent="Background" unique_id=1644741050]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-color = Color(0.28863296, 0.47618765, 0.31004375, 1)
-
-[node name="BottomColor" type="ColorRect" parent="Background" unique_id=875609244]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 170.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-color = Color(0.19887239, 0.33872226, 0.21399912, 1)
+position = Vector2(100, 112.895)
+jump_force = -185.0
 
 [node name="PipeTimer" type="Timer" parent="." unique_id=2041042398]
 wait_time = 1.6999999999999995
@@ -48,6 +25,11 @@ autostart = true
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=714562999]
 unique_name_in_owner = true
 position = Vector2(353, 145)
+
+[node name="ParallaxBG" parent="." unique_id=1635095295 instance=ExtResource("4_jyhfs")]
+
+[node name="Pipes" type="Node2D" parent="." unique_id=1103681441]
+z_index = 1
 
 [connection signal="player_hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="player_hit" from="Player" to="HUDLayer/HUD" method="_on_player_hit"]
