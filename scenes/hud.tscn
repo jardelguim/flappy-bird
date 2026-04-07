@@ -1,14 +1,52 @@
-[gd_scene format=3 uid="uid://bpp0u7c8c3mht"]
+[gd_scene format=3 uid="uid://c7ulmnpaue1p6"]
 
 [ext_resource type="Script" uid="uid://n8w1o4q3hx0r" path="res://src/hud.gd" id="1_047uy"]
-[ext_resource type="StyleBox" uid="uid://lsv8yg40ald3" path="res://assets/styles/panel_style.tres" id="1_oo0fn"]
+[ext_resource type="StyleBox" uid="uid://dg3yhhuuk11n5" path="res://assets/styles/panel_style.tres" id="1_oo0fn"]
 [ext_resource type="LabelSettings" uid="uid://cqd7qthut4ihh" path="res://assets/styles/label_style.tres" id="2_5ysmq"]
 [ext_resource type="FontFile" uid="uid://bodk7wnenmgon" path="res://assets/fonts/determination.ttf" id="3_6fi6k"]
+[ext_resource type="PackedScene" uid="uid://diqodyct55h2d" path="res://scenes/player_sprite.tscn" id="4_mphia"]
 [ext_resource type="StyleBox" uid="uid://cbhmstrvho04k" path="res://assets/styles/button_style_normal.tres" id="4_uo2fv"]
 [ext_resource type="StyleBox" uid="uid://dvvmj57mkcaaf" path="res://assets/styles/retry_button_style_normal.tres" id="5_hd3ao"]
 [ext_resource type="StyleBox" uid="uid://beaq0mrowy4dw" path="res://assets/styles/button_style_hovered.tres" id="5_uo2fv"]
 [ext_resource type="StyleBox" uid="uid://c2so0f1ff48ea" path="res://assets/styles/retry_button_style_hovered.tres" id="7_0i1j5"]
 [ext_resource type="LabelSettings" uid="uid://dcx213jbrbafg" path="res://assets/styles/hint_label.tres" id="7_5pdws"]
+
+[sub_resource type="Animation" id="Animation_5n1hp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.14509805, 0.14509805, 0.14509805, 0.5921569)]
+}
+
+[sub_resource type="Animation" id="Animation_eld54"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.14509805, 0.14509805, 0.14509805, 0.5921569), Color(0.14509805, 0.14509805, 0.14509805, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3swnk"]
+_data = {
+&"RESET": SubResource("Animation_5n1hp"),
+&"fade_in": SubResource("Animation_eld54")
+}
 
 [sub_resource type="Animation" id="Animation_047uy"]
 length = 0.001
@@ -89,35 +127,160 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StartMenu:position")
+tracks/0/path = NodePath("StartMenu/RichTextLabel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(95, 49)]
+"values": [Vector2(71, 18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu/Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 168.37)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartMenu/PlayerSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 78.62)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverMenu/ScoreText:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(71, -50)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverMenu/GameOverText:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(71, -55.82)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameOverMenu/Control:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 300)]
+}
+
+[sub_resource type="Animation" id="Animation_apjy4"]
+resource_name = "game_over_intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverMenu/ScoreText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(2.2973964, 0.4829682),
+"update": 0,
+"values": [Vector2(71, -50), Vector2(71, 62.85)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverMenu/GameOverText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.3784142, 0.48296815),
+"update": 0,
+"values": [Vector2(71, -50), Vector2(71, 18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverMenu/Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(2.6390162, 0.46651652),
+"update": 0,
+"values": [Vector2(150, 300), Vector2(150, 168.37)]
 }
 
 [sub_resource type="Animation" id="Animation_0m4u7"]
 resource_name = "startmenu_animation"
-length = 0.45
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StartMenu:position")
+tracks/0/path = NodePath("StartMenu/RichTextLabel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.43333334),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(71, 18), Vector2(71, -45.295)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartMenu/Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(150, 168.37), Vector2(150, 274.875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartMenu/PlayerSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(95, 49), Vector2(110.8, 49), Vector2(-150, 49)]
+"values": [Vector2(150, 78.62), Vector2(100, 78.62), Vector2(450, 78.62)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_apjy4"]
 _data = {
 &"RESET": SubResource("Animation_mphia"),
+&"game_over_intro": SubResource("Animation_apjy4"),
 &"startmenu_animation": SubResource("Animation_0m4u7")
 }
 
@@ -153,54 +316,84 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.5921569)
 
-[node name="StartMenu" type="MarginContainer" parent="." unique_id=101996932]
+[node name="BGFAde" type="AnimationPlayer" parent="HUDBG" unique_id=1042631149]
+libraries/ = SubResource("AnimationLibrary_3swnk")
+
+[node name="StartMenu" type="Control" parent="." unique_id=1668006651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StartMenu" unique_id=944485897]
+clip_contents = false
+custom_minimum_size = Vector2(0, 22.34)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = 18.0
+offset_right = 79.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("3_6fi6k")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Flappy Bird[/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="PlayerSprite" parent="StartMenu" unique_id=118259124 instance=ExtResource("4_mphia")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -51.0
-offset_right = 55.000443
-offset_bottom = 51.0
+offset_top = -21.379997
+offset_right = 0.0
+offset_bottom = -21.379997
+
+[node name="Control" type="Control" parent="StartMenu" unique_id=1003638387]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -31.630005
+offset_bottom = -31.630005
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
-[node name="MainVerticalContainer" type="VBoxContainer" parent="StartMenu" unique_id=1439245868]
-layout_mode = 2
-theme_override_constants/separation = 10
+[node name="MarginContainer" type="MarginContainer" parent="StartMenu/Control" unique_id=1875301202]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -56.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="MainText" type="Label" parent="StartMenu/MainVerticalContainer" unique_id=354703359]
-layout_mode = 2
-text = "Flappy Bird"
-label_settings = ExtResource("2_5ysmq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="StartMenu/MainVerticalContainer" unique_id=944485897]
-visible = false
-clip_contents = false
-custom_minimum_size = Vector2(0, 22.34)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_6fi6k")
-bbcode_enabled = true
-text = "[shake rate=20.0 level=5 connected=1]{text}[/shake]"
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="StartMenu/MainVerticalContainer" unique_id=780192071]
-layout_mode = 2
-theme_override_constants/margin_top = 11
-
-[node name="Panel" type="Panel" parent="StartMenu/MainVerticalContainer/MarginContainer" unique_id=1113089584]
+[node name="Panel" type="Panel" parent="StartMenu/Control/MarginContainer" unique_id=1298537079]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("1_oo0fn")
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="StartMenu/MainVerticalContainer/MarginContainer" unique_id=1497516563]
+[node name="ButtonsContainer" type="VBoxContainer" parent="StartMenu/Control/MarginContainer" unique_id=2145698837]
 layout_mode = 2
-theme_override_constants/separation = 5
 
-[node name="StartButton" type="Button" parent="StartMenu/MainVerticalContainer/MarginContainer/ButtonsContainer" unique_id=670705200]
+[node name="StartButton" type="Button" parent="StartMenu/Control/MarginContainer/ButtonsContainer" unique_id=2108186531]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -212,7 +405,7 @@ theme_override_styles/pressed = ExtResource("4_uo2fv")
 theme_override_styles/hover = ExtResource("5_uo2fv")
 text = "Start"
 
-[node name="QuitButton2" type="Button" parent="StartMenu/MainVerticalContainer/MarginContainer/ButtonsContainer" unique_id=1621446674]
+[node name="QuitButton2" type="Button" parent="StartMenu/Control/MarginContainer/ButtonsContainer" unique_id=120020805]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -224,45 +417,95 @@ theme_override_styles/pressed = ExtResource("4_uo2fv")
 theme_override_styles/hover = ExtResource("5_uo2fv")
 text = "Quit"
 
-[node name="GameOverMenu" type="MarginContainer" parent="." unique_id=701987737]
+[node name="GameOverMenu" type="Control" parent="." unique_id=1142510976]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -51.0
-offset_right = 55.0
-offset_bottom = 51.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainVerticalContainer" type="VBoxContainer" parent="GameOverMenu" unique_id=1357086852]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="MainText" type="Label" parent="GameOverMenu/MainVerticalContainer" unique_id=1510807070]
-layout_mode = 2
-text = "Game Over"
-label_settings = ExtResource("2_5ysmq")
+[node name="GameOverText" type="RichTextLabel" parent="GameOverMenu" unique_id=1008478157]
+clip_contents = false
+custom_minimum_size = Vector2(0, 22.34)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = -55.82
+offset_right = 79.0
+offset_bottom = -20.82
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("3_6fi6k")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Game Over :([/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="GameOverMenu/MainVerticalContainer" unique_id=1577734100]
-layout_mode = 2
-theme_override_constants/margin_top = 11
+[node name="ScoreText" type="RichTextLabel" parent="GameOverMenu" unique_id=79494050]
+clip_contents = false
+custom_minimum_size = Vector2(0, 22.34)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_top = -50.0
+offset_right = 79.0
+offset_bottom = -14.999992
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("3_6fi6k")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Score : 00[/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="GameOverMenu/MainVerticalContainer/MarginContainer" unique_id=2048496233]
+[node name="Control" type="Control" parent="GameOverMenu" unique_id=2127374148]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverMenu/Control" unique_id=712131982]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -56.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="GameOverMenu/Control/MarginContainer" unique_id=1824531277]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("1_oo0fn")
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="GameOverMenu/MainVerticalContainer/MarginContainer" unique_id=2129171822]
+[node name="ButtonsContainer" type="VBoxContainer" parent="GameOverMenu/Control/MarginContainer" unique_id=2129171822]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="RetryButton" type="Button" parent="GameOverMenu/MainVerticalContainer/MarginContainer/ButtonsContainer" unique_id=1028942119]
+[node name="RetryButton" type="Button" parent="GameOverMenu/Control/MarginContainer/ButtonsContainer" unique_id=1028942119]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -274,7 +517,7 @@ theme_override_styles/pressed = ExtResource("5_hd3ao")
 theme_override_styles/hover = ExtResource("7_0i1j5")
 text = "Try Again"
 
-[node name="QuitButton2" type="Button" parent="GameOverMenu/MainVerticalContainer/MarginContainer/ButtonsContainer" unique_id=119384680]
+[node name="QuitButton2" type="Button" parent="GameOverMenu/Control/MarginContainer/ButtonsContainer" unique_id=119384680]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -323,10 +566,17 @@ libraries/ = SubResource("AnimationLibrary_hd3ao")
 [node name="HintLabel" type="Label" parent="." unique_id=616414658]
 visible = false
 layout_mode = 1
-offset_left = 11.0
-offset_top = 17.0
-offset_right = 123.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -36.0
+offset_right = 56.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Press SPACE to jump"
 label_settings = ExtResource("7_5pdws")
 horizontal_alignment = 1
@@ -337,10 +587,10 @@ libraries/ = SubResource("AnimationLibrary_mphia")
 [node name="HUDAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102933864]
 libraries/ = SubResource("AnimationLibrary_apjy4")
 
-[connection signal="pressed" from="StartMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="StartMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="GameOverMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="GameOverMenu/MainVerticalContainer/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="StartMenu/Control/MarginContainer/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartMenu/Control/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/Control/MarginContainer/ButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/Control/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="GameStartTimer" to="." method="_on_game_start_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="timeout" from="HintTimer" to="." method="_on_hint_timer_timeout"]

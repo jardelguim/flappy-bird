@@ -12,7 +12,6 @@ signal player_hit
 func _ready() -> void:
 	screen_max_y = get_viewport_rect().size.y - 12.0
 	
-
 func _physics_process(delta):
 	# rotaciona baseado na velocidaded
 	self.rotation = deg_to_rad(clamp(self.velocity.y * 0.1, -30, 90))
@@ -48,8 +47,8 @@ func take_damage() -> void:
 	is_grav_on = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
+	player_hit.emit()
 	_play_fall()
 	await $AnimationPlayer.animation_finished
-	player_hit.emit()
 	
 	
