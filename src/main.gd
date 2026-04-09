@@ -53,5 +53,6 @@ func _on_player_hit() -> void:
 	parallax_bg.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _increase_score() -> void:
+	Sound.play_sound("point", "effect")
 	score += 1
 	$HUDLayer/HUD.update_score(score)

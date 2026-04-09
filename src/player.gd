@@ -20,6 +20,7 @@ func _physics_process(delta):
 		self.velocity.y += gravity * delta
 
 		if Input.is_action_just_pressed("jump"):
+			Sound.play_sound("swooshing")
 			self.velocity.y = jump_force
 
 		self.position.y = clamp(self.position.y, 0, screen_max_y)
@@ -41,6 +42,7 @@ func _play_idle():
 	
 func _play_fall():
 	$AnimationPlayer.play("fall")
+	Sound.play_sound("die")
 
 func take_damage() -> void:
 	velocity = Vector2.ZERO
@@ -50,5 +52,3 @@ func take_damage() -> void:
 	player_hit.emit()
 	_play_fall()
 	await $AnimationPlayer.animation_finished
-	
-	

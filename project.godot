@@ -15,6 +15,10 @@ run/main_scene="uid://bvpnynt0wo3dj"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Sound="*uid://chfee1b6esf14"
+
 [display]
 
 window/size/viewport_width=300
