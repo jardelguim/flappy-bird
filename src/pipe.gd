@@ -33,6 +33,7 @@ func _on_pipes_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.call("take_damage")
 
+
 func _on_passage_body_entered(body: Node2D) -> void:
 	pipe_passed.emit()
    

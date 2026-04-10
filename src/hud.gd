@@ -13,6 +13,7 @@ func update_score(score: int) -> void:
 	
 func _on_start_button_pressed() -> void:
 	$HUDAnimationPlayer.play("startmenu_animation")
+	Sound.play_sound("button" , "effect")
 	await  $HUDAnimationPlayer.animation_finished
 	$StartMenu.hide()
 	$TimerLabel.show()
@@ -40,6 +41,7 @@ func _on_hint_timer_timeout() -> void:
 func _on_retry_button_pressed() -> void:
 	# $GameOverMenu.hide()
 	$HUDAnimationPlayer.play_backwards("game_over_intro")
+	Sound.play_sound("button" , "effect")
 	$HUDAnimationPlayer.speed_scale = 2.0
 	await $HUDAnimationPlayer.animation_finished
 	$HUDAnimationPlayer.speed_scale = 1.0

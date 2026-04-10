@@ -25,6 +25,7 @@ func _reset_pipes() -> void:
 
 func _reset_game() -> void:
 	_reset_pipes()
+	Sound.stop_sound()
 	player._play_start()
 	get_tree().paused = false
 	score = 0

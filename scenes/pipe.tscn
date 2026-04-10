@@ -7,7 +7,7 @@
 size = Vector2(20, 172)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8p0di"]
-size = Vector2(20, 58)
+size = Vector2(7, 58)
 
 [node name="Pipe" type="Node2D" unique_id=1196856779]
 script = ExtResource("1_arpqm")
@@ -30,6 +30,7 @@ shape = SubResource("RectangleShape2D_8x3ej")
 position = Vector2(0, 1)
 
 [node name="MiddleCollision" type="CollisionShape2D" parent="Passage" unique_id=1360723009]
+position = Vector2(9, 0)
 shape = SubResource("RectangleShape2D_8p0di")
 
 [connection signal="body_entered" from="Pipes" to="." method="_on_pipes_body_entered"]

@@ -42,7 +42,7 @@ func _play_idle():
 	
 func _play_fall():
 	$AnimationPlayer.play("fall")
-	Sound.play_sound("die")
+	
 
 func take_damage() -> void:
 	velocity = Vector2.ZERO
@@ -51,4 +51,6 @@ func take_damage() -> void:
 	get_tree().paused = true
 	player_hit.emit()
 	_play_fall()
-	await $AnimationPlayer.animation_finished
+	Sound.play_sound("hit" , "char")
+	await get_tree().create_timer(0.5).timeout 
+	Sound.play_sound("die" , "effect")
