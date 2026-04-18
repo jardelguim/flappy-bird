@@ -20,7 +20,7 @@ func _physics_process(delta):
 		self.velocity.y += gravity * delta
 
 		if Input.is_action_just_pressed("jump"):
-			Sound.play_sound("swooshing")
+			Sound.play_sound("wing")
 			self.velocity.y = jump_force
 
 		self.position.y = clamp(self.position.y, 0, screen_max_y)

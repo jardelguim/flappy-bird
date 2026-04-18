@@ -34,6 +34,6 @@ func _on_pipes_body_entered(body: Node2D) -> void:
 		body.call("take_damage")
 
 
-func _on_passage_body_entered(body: Node2D) -> void:
+func _on_passage_body_entered(_body: Node2D) -> void:
 	pipe_passed.emit()
    

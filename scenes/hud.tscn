@@ -587,9 +587,13 @@ libraries/ = SubResource("AnimationLibrary_mphia")
 [node name="HUDAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102933864]
 libraries/ = SubResource("AnimationLibrary_apjy4")
 
+[connection signal="mouse_entered" from="StartMenu/Control/MarginContainer/ButtonsContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="StartMenu/Control/MarginContainer/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="StartMenu/Control/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_2_mouse_entered"]
 [connection signal="pressed" from="StartMenu/Control/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="GameOverMenu/Control/MarginContainer/ButtonsContainer/RetryButton" to="." method="_on_retry_button_mouse_entered"]
 [connection signal="pressed" from="GameOverMenu/Control/MarginContainer/ButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="mouse_entered" from="GameOverMenu/Control/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_2_mouse_entered"]
 [connection signal="pressed" from="GameOverMenu/Control/MarginContainer/ButtonsContainer/QuitButton2" to="." method="_on_quit_button_pressed"]
 [connection signal="timeout" from="GameStartTimer" to="." method="_on_game_start_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

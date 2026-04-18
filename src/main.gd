@@ -14,6 +14,7 @@ func _ready() -> void:
 	#player.hide()
 	player_start_pos = player.global_position
 	get_tree().paused = true
+	Sound.play_sound("ambient" , "music")
 
 func _reset_pipes() -> void:
 	player.global_position = player_start_pos

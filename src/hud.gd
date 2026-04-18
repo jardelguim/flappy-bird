@@ -5,15 +5,12 @@ extends Control
 @onready var player_sprite: Control = $StartMenu/PlayerSprite
 
 
-func _ready() -> void:
-	$HUDAnimationPlayer.play("start_fade")
-
 func update_score(score: int) -> void:
 	$ScoreLabel.text = str(score)
 	
 func _on_start_button_pressed() -> void:
 	$HUDAnimationPlayer.play("startmenu_animation")
-	Sound.play_sound("button" , "effect")
+	Sound.play_sound("confirm" , "effect")
 	await  $HUDAnimationPlayer.animation_finished
 	$StartMenu.hide()
 	$TimerLabel.show()
@@ -60,3 +57,12 @@ func _on_reset_timer_timeout() -> void:
 	$TimerLabel.hide()
 	$HUDBG/BGFAde.play("fade_in")
 	main._reset_game()
+
+func _on_start_button_mouse_entered() -> void:
+	Sound.play_sound("select" , "effect")
+
+func _on_quit_button_2_mouse_entered() -> void:
+	Sound.play_sound("select" , "effect")
+
+func _on_retry_button_mouse_entered() -> void:
+	Sound.play_sound("select" , "effect")
