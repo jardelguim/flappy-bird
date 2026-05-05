@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Flappy Bird"
+config/description="Simple flappy bird clone made in godot"
+config/version="1.0"
 run/main_scene="uid://bvpnynt0wo3dj"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://s8jcc5w166ud"
 
 [audio]
 

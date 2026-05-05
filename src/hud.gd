@@ -38,7 +38,7 @@ func _on_hint_timer_timeout() -> void:
 func _on_retry_button_pressed() -> void:
 	# $GameOverMenu.hide()
 	$HUDAnimationPlayer.play_backwards("game_over_intro")
-	Sound.play_sound("button" , "effect")
+	Sound.play_sound("confirm" , "effect")
 	$HUDAnimationPlayer.speed_scale = 2.0
 	await $HUDAnimationPlayer.animation_finished
 	$HUDAnimationPlayer.speed_scale = 1.0
