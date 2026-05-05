@@ -19,7 +19,7 @@ func _physics_process(delta):
 	if is_grav_on:
 		self.velocity.y += gravity * delta
 
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") or InputEventScreenTouch:
 			Sound.play_sound("wing")
 			self.velocity.y = jump_force
 
